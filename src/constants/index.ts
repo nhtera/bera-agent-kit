@@ -6,6 +6,8 @@ export const CONTRACT = {
     "0x406846114B2A9b65a8A2Ab702C2C57d27784dBA2" as `0x${string}`,
   BeraCrocMultiSwap:
     "0x21e2C0AFd058A89FCf7caf3aEA3cB84Ae977B73D" as `0x${string}`,
+  RoycoRecipeMarketHub:
+    "0x783251f103555068c1e9d755f69458f39ed937c0" as `0x${string}`,
 } as const;
 
 export const TOKEN = {
