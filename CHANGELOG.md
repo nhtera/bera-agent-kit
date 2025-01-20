@@ -1,3 +1,16 @@
+# [0.1.0](https://github.com/Webera-Finance/bera-agent-kit/compare/v0.0.10...v0.1.0) (2025-01-20)
+
+
+### Bug Fixes
+
+* run local and docs ([#68](https://github.com/Webera-Finance/bera-agent-kit/issues/68)) ([512b474](https://github.com/Webera-Finance/bera-agent-kit/commit/512b474fa991af4574b95cd11a7b7f274293f406))
+
+
+### Features
+
+* add wallet provider as default wallet ([#69](https://github.com/Webera-Finance/bera-agent-kit/issues/69)) ([b5165c4](https://github.com/Webera-Finance/bera-agent-kit/commit/b5165c4a56c64c48f869868d85f4980a1dd533de))
+* update prompt clarify default token mapping and native token details ([6de194b](https://github.com/Webera-Finance/bera-agent-kit/commit/6de194bf3499345bdd9574c585b35f6101bd3dfa))
+
 # [0.1.0](https://github.com/Webera-Finance/bera-agent-kit/compare/v0.0.10...v0.1.0) (2025-01-17)
 
 
