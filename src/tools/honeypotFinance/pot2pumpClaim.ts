@@ -1,10 +1,13 @@
-import { Address } from "viem";
-import { ToolConfig } from "../allTools";
-import { CONTRACT } from "../../constants/index";
-import { createViemWalletClient } from "../../utils/createViemWalletClient";
-import { log } from "../../utils/logger";
-import { pot2pumpFacadeABI } from "../../constants/honeypotFinanceABI";
-import { checkAndApproveAllowance, fetchTokenDecimalsAndParseAmount } from "../../utils/helpers";
+import { Address } from 'viem';
+import { ToolConfig } from '../allTools';
+import { CONTRACT } from '../../constants/index';
+import { createViemWalletClient } from '../../utils/createViemWalletClient';
+import { log } from '../../utils/logger';
+import { pot2pumpFacadeABI } from '../../constants/honeypotFinanceABI';
+import {
+  checkAndApproveAllowance,
+  fetchTokenDecimalsAndParseAmount,
+} from '../../utils/helpers';
 
 interface Pot2PumpClaimArgs {
   launchedToken: Address;
@@ -14,33 +17,33 @@ interface Pot2PumpClaimArgs {
 
 export const pot2pumpClaimTool: ToolConfig<Pot2PumpClaimArgs> = {
   definition: {
-    type: "function",
+    type: 'function',
     function: {
-      name: "claim",
-      description: "Claim from a pot2pump project",
+      name: 'claim',
+      description: 'Claim from a pot2pump project',
       parameters: {
-        type: "object",
+        type: 'object',
         properties: {
           launchedToken: {
-            type: "string",
-            pattern: "^0x[a-fA-F0-9]{40}$",
-            description: "Token address to deposit",
+            type: 'string',
+            pattern: '^0x[a-fA-F0-9]{40}$',
+            description: 'Token address to deposit',
           },
           raisedToken: {
-            type: "string",
-            pattern: "^0x[a-fA-F0-9]{40}$",
-            description: "Token address to deposit",
+            type: 'string',
+            pattern: '^0x[a-fA-F0-9]{40}$',
+            description: 'Token address to deposit',
           },
           raisedTokenAmount: {
-            type: "number",
-            description: "The amount of tokens to deposit",
+            type: 'number',
+            description: 'The amount of tokens to deposit',
           },
         },
-        required: ["launchedToken", "raisedToken", "raisedTokenAmount"],
+        required: ['launchedToken', 'raisedToken', 'raisedTokenAmount'],
       },
     },
   },
-  handler: async (args) => {
+  handler: async args => {
     try {
       const walletClient = createViemWalletClient();
 
@@ -63,11 +66,8 @@ export const pot2pumpClaimTool: ToolConfig<Pot2PumpClaimArgs> = {
       const hash = await walletClient.writeContract({
         address: CONTRACT.Pot2PumpFacade,
         abi: pot2pumpFacadeABI,
-        functionName: "deposit",
-        args: [
-          args.launchedToken,
-          parsedAmount,
-        ],
+        functionName: 'deposit',
+        args: [args.launchedToken, parsedAmount],
       });
 
       log.info(
