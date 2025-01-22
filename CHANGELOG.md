@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/Webera-Finance/bera-agent-kit/compare/v1.0.4...v1.0.5) (2025-01-22)
+
+
+### Bug Fixes
+
+* update semantic release github ([#79](https://github.com/Webera-Finance/bera-agent-kit/issues/79)) ([29b0fd3](https://github.com/Webera-Finance/bera-agent-kit/commit/29b0fd3d60b31db60f007fab6db70bf9e581f2dc))
+
 ## [1.0.4](https://github.com/Webera-Finance/bera-agent-kit/compare/v1.0.3...v1.0.4) (2025-01-22)
 
 
