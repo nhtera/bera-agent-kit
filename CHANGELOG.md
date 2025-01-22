@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/Webera-Finance/bera-agent-kit/compare/v1.0.2...v1.0.3) (2025-01-22)
+
+
+### Bug Fixes
+
+* resolve asset upload conflict by removing existing assets ([#76](https://github.com/Webera-Finance/bera-agent-kit/issues/76)) ([232b6a3](https://github.com/Webera-Finance/bera-agent-kit/commit/232b6a3cc96c7e0f8f1632494ee8ce4c36b03f28))
+
 ## [1.0.2](https://github.com/Webera-Finance/bera-agent-kit/compare/v1.0.1...v1.0.2) (2025-01-22)
 
 
