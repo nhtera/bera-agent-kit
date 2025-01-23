@@ -1,3 +1,10 @@
+## [1.0.7](https://github.com/Webera-Finance/bera-agent-kit/compare/v1.0.6...v1.0.7) (2025-01-23)
+
+
+### Bug Fixes
+
+* **pot2pump:** use embed wallet provider from outside constructor ([#82](https://github.com/Webera-Finance/bera-agent-kit/issues/82)) ([c2b2011](https://github.com/Webera-Finance/bera-agent-kit/commit/c2b20118bc19d256b728f62c100af3f5e05de655))
+
 ## [1.0.6](https://github.com/Webera-Finance/bera-agent-kit/compare/v1.0.5...v1.0.6) (2025-01-22)
 
 
