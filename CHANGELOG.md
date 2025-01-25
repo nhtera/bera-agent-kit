@@ -1,3 +1,12 @@
+## [1.0.9](https://github.com/Webera-Finance/bera-agent-kit/compare/v1.0.8...v1.0.9) (2025-01-25)
+
+
+### Bug Fixes
+
+* kodiak more clear input prompt ([#88](https://github.com/Webera-Finance/bera-agent-kit/issues/88)) ([3d3d9a7](https://github.com/Webera-Finance/bera-agent-kit/commit/3d3d9a7f6f23923e9544a62f669310a15619eeb5))
+* oogabooga swap ([#86](https://github.com/Webera-Finance/bera-agent-kit/issues/86)) ([83a0a4b](https://github.com/Webera-Finance/bera-agent-kit/commit/83a0a4b49e7da35679664a450336e5e0a0b4337a))
+* use viem zero address ([#87](https://github.com/Webera-Finance/bera-agent-kit/issues/87)) ([082bbaa](https://github.com/Webera-Finance/bera-agent-kit/commit/082bbaa237d1b1161ba151a4449d8c7c50182146))
+
 ## [1.0.8](https://github.com/Webera-Finance/bera-agent-kit/compare/v1.0.7...v1.0.8) (2025-01-23)
 
 
