@@ -29,7 +29,11 @@ export async function handleRunToolCalls(
 
       try {
         const args = JSON.parse(tool.function.arguments);
-        const output = await toolConfig.handler(args, walletClient, toolEnvConfigs);
+        const output = await toolConfig.handler(
+          args,
+          walletClient,
+          toolEnvConfigs,
+        );
         return {
           tool_call_id: tool.id,
           output: String(output),

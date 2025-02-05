@@ -1,3 +1,12 @@
+## [1.0.10](https://github.com/Webera-Finance/bera-agent-kit/compare/v1.0.9...v1.0.10) (2025-02-05)
+
+
+### Bug Fixes
+
+* add custom config for tools ([#89](https://github.com/Webera-Finance/bera-agent-kit/issues/89)) ([05d31e8](https://github.com/Webera-Finance/bera-agent-kit/commit/05d31e815c84fa454bdbe51051f5eda94371ed84))
+* error with erc20 transfer/get balance ([#91](https://github.com/Webera-Finance/bera-agent-kit/issues/91)) ([0cda2b0](https://github.com/Webera-Finance/bera-agent-kit/commit/0cda2b0e28dc98799e4945cb6ccc8fe2622344b5))
+* modify prompts result summary ([#92](https://github.com/Webera-Finance/bera-agent-kit/issues/92)) ([0db00d7](https://github.com/Webera-Finance/bera-agent-kit/commit/0db00d75116f4c16bef44e6d3c34ae411a4b56e4))
+
 ## [1.0.9](https://github.com/Webera-Finance/bera-agent-kit/compare/v1.0.8...v1.0.9) (2025-01-25)
 
 
