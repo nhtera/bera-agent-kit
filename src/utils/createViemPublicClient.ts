@@ -1,9 +1,9 @@
 import { createPublicClient, http } from 'viem';
-import { berachainTestnetbArtio } from 'viem/chains';
+import { berachain, berachainTestnetbArtio } from 'viem/chains';
 
-export function createViemPublicClient() {
+export function createViemPublicClient(envType?: boolean) {
   return createPublicClient({
-    chain: berachainTestnetbArtio,
+    chain: envType === false ? berachainTestnetbArtio : berachain,
     transport: http(),
   });
 }

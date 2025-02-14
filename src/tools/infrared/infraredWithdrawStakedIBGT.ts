@@ -1,13 +1,13 @@
-import { Address, parseUnits, WalletClient } from 'viem';
+import { PublicClient, WalletClient } from 'viem';
 import { ToolConfig } from '../allTools';
-import { CONTRACT, TOKEN } from '../../constants/index';
-// import { createViemWalletClient } from '../../utils/createViemWalletClient';
 import {
   // checkAndApproveAllowance,
   fetchTokenDecimalsAndParseAmount,
 } from '../../utils/helpers';
 import { InfraredVaultABI } from '../../constants/infraredABI';
 import { createViemPublicClient } from '../../utils/createViemPublicClient';
+import { ConfigChain } from '../../constants/chain';
+import { SupportedChainId } from '../../utils/enum';
 
 interface InfraredWithdrawStakedIBGTArgs {
   withdrawAmount: number;
@@ -34,16 +34,21 @@ export const infraredWithdrawStakedIBGTTool: ToolConfig<InfraredWithdrawStakedIB
     },
     handler: async (
       args: InfraredWithdrawStakedIBGTArgs,
+      config: ConfigChain,
       walletClient?: WalletClient,
+      publicClient?: PublicClient,
     ) => {
       try {
         if (!walletClient || !walletClient.account) {
           throw new Error('Wallet client is not provided');
         }
-        const publicClient = createViemPublicClient();
+
+        const envType =
+          walletClient?.chain?.id === SupportedChainId.Mainnet ? true : false;
+        const newPublicClient = publicClient ?? createViemPublicClient(envType);
         // constants
-        const ibgtTokenAddress = TOKEN.IBGT;
-        const infraredIBGTVaultAddress = CONTRACT.InfraredIBGTVault;
+        const ibgtTokenAddress = config.TOKEN.IBGT;
+        const infraredIBGTVaultAddress = config.CONTRACT.InfraredIBGTVault;
 
         const parsedWithdrawAmount = await fetchTokenDecimalsAndParseAmount(
           walletClient,
@@ -54,7 +59,7 @@ export const infraredWithdrawStakedIBGTTool: ToolConfig<InfraredWithdrawStakedIB
         console.log(`[INFO] Checking allowance for ${ibgtTokenAddress}`);
 
         // check staked iBGT amount
-        const stakedIBGT = (await publicClient.readContract({
+        const stakedIBGT = (await newPublicClient.readContract({
           address: infraredIBGTVaultAddress,
           abi: InfraredVaultABI,
           functionName: 'balanceOf',

@@ -1,15 +1,18 @@
 import OpenAI from 'openai';
 import { Run } from 'openai/resources/beta/threads/runs';
 import { Thread } from 'openai/resources/beta/threads';
-import { WalletClient } from 'viem';
+import { PublicClient, WalletClient } from 'viem';
 import { createTools } from '../tools/allTools';
 import { log } from '../utils/logger';
+import { ConfigChain } from '../constants/chain';
 
 export async function handleRunToolCalls(
   run: Run,
   client: OpenAI,
   thread: Thread,
+  config: ConfigChain,
   walletClient: WalletClient,
+  publicClient?: PublicClient,
   toolEnvConfigs?: Record<string, unknown>,
 ): Promise<Run> {
   const toolCalls = run.required_action?.submit_tool_outputs?.tool_calls;
@@ -31,7 +34,9 @@ export async function handleRunToolCalls(
         const args = JSON.parse(tool.function.arguments);
         const output = await toolConfig.handler(
           args,
+          config,
           walletClient,
+          publicClient,
           toolEnvConfigs,
         );
         return {

@@ -7,9 +7,10 @@ import {
 } from 'viem';
 import { TokenABI } from '../constants/tokenABI';
 import axios from 'axios';
-import { URL } from '../constants';
 import { log } from './logger';
 import { createViemPublicClient } from './createViemPublicClient';
+import { ConfigChain } from '../constants/chain';
+import { SupportedChainId } from './enum';
 
 const tokenDecimalsCache: Map<string, number> = new Map();
 
@@ -68,7 +69,9 @@ export const checkAndApproveAllowance = async (
     return;
   }
 
-  const publicClient = createViemPublicClient();
+  const envType =
+    walletClient?.chain?.id === SupportedChainId.Mainnet ? true : false;
+  const publicClient = createViemPublicClient(envType);
 
   log.info(`[INFO] Checking allowance for ${token} to spender ${spender}`);
 
@@ -112,10 +115,11 @@ export const checkAndApproveAllowance = async (
 export const fetchVaultAndTokenAddress = async (
   token: Address,
   isVault: boolean,
+  config: ConfigChain,
 ): Promise<{ vaultAddress: Address; stakingTokenAddress: Address }> => {
   try {
     log.info(`[INFO] Fetching vaults data...`);
-    const response = await axios.get(URL.BGTVaultURL);
+    const response = await axios.get(config.URL.BGTVaultURL);
     const vaults = response.data.vaults;
 
     for (const vault of vaults) {
