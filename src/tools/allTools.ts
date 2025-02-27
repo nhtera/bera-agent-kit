@@ -19,8 +19,14 @@ import { liveSearchTool } from './tavilySearch/liveSearch';
 import { pot2pumpLaunchTool } from './honeypotFinance/pot2pumpLaunch';
 import { pot2pumpClaimTool } from './honeypotFinance/pot2pumpClaim';
 import { pot2pumpDepositTool } from './honeypotFinance/pot2pumpDeposit';
+import { infraredStakeHoneyByusdTool } from './infrared/infraredStakeHoneyByusd';
+import { infraredStakeHoneyUsdceTool } from './infrared/infraredStakeHoneyUsdce';
+
 import { ConfigChain } from '../constants/chain';
 import { kodiakAddLiquidityToolV2 } from './kodiak/kodiakAddLiquidityV2';
+import { infraredStakeHoneyWBeraTool } from './infrared/infraredStakeHoneyWBera';
+import { infraredStakeWBeraWBTCTool } from './infrared/infraredStakeWBeraWBTC';
+import { infraredStakeWBeraWETHTool } from './infrared/infraredStakeWBeraWETH';
 
 export interface ToolConfig<T = any, W = WalletClient, P = PublicClient> {
   definition: {
@@ -67,5 +73,10 @@ export function createTools(): Record<string, ToolConfig<any, WalletClient>> {
     pot2pump_launch: pot2pumpLaunchTool,
     pot2pump_claim: pot2pumpClaimTool,
     pot2pump_deposit: pot2pumpDepositTool,
+    infrared_stake_honey_byusd: infraredStakeHoneyByusdTool,
+    infrared_stake_honey_usdce: infraredStakeHoneyUsdceTool,
+    infrared_stake_honey_wbera: infraredStakeHoneyWBeraTool,
+    infrared_stake_wbera_wbtc: infraredStakeWBeraWBTCTool,
+    infrared_stake_wbera_weth: infraredStakeWBeraWETHTool,
   };
 }
