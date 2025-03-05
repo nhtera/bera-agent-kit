@@ -1,11 +1,12 @@
 import { WalletClient } from 'viem';
-import { ToolConfig } from '../allTools';
-import {
-  checkAndApproveAllowance,
-  fetchTokenDecimalsAndParseAmount,
-} from '../../utils/helpers';
 import { InfraredVaultContractABI } from '../../constants/abis//InfraredVaultContractABI';
 import { ConfigChain } from '../../constants/chain';
+import {
+  checkAndApproveAllowance,
+  checkBalance,
+  fetchTokenDecimalsAndParseAmount
+} from '../../utils/helpers';
+import { ToolConfig } from '../allTools';
 
 interface InfraredStakeHoneyUsdceArgs {
   stakeAmount: number;
@@ -40,10 +41,17 @@ export const infraredStakeHoneyUsdceTool: ToolConfig<InfraredStakeHoneyUsdceArgs
           throw new Error('Wallet client is not provided');
         }
 
+
         const parsedStakeAmount = await fetchTokenDecimalsAndParseAmount(
           walletClient,
           config.TOKEN.HONEY_USDCE,
           args.stakeAmount,
+        );
+
+        await checkBalance(
+          walletClient,
+          parsedStakeAmount,
+          config.TOKEN.HONEY_USDCE,
         );
 
         console.log(

@@ -2,6 +2,7 @@ import { WalletClient } from 'viem';
 import { ToolConfig } from '../allTools';
 import {
   checkAndApproveAllowance,
+  checkBalance,
   fetchTokenDecimalsAndParseAmount,
 } from '../../utils/helpers';
 import { InfraredVaultABI } from '../../constants/abis/infraredABI';
@@ -47,6 +48,12 @@ export const infraredStakeIBGTTool: ToolConfig<InfraredStakeIBGTArgs> = {
         walletClient,
         ibgtTokenAddress,
         args.stakeAmount,
+      );
+
+      await checkBalance(
+        walletClient,
+        parsedStakeAmount,
+        ibgtTokenAddress,
       );
 
       console.log(`[INFO] Checking allowance for ${ibgtTokenAddress}`);

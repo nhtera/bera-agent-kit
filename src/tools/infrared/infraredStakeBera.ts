@@ -1,9 +1,9 @@
 import { WalletClient } from 'viem';
 import { ToolConfig } from '../allTools';
-import { getNativeTokenBalance } from '../../utils/helpers';
 import { ConfigChain } from '../../constants/chain';
 import { InfraredIBeraContractABI } from '../../constants/abis/infraredIBeraContractABI';
 import { parseEther } from 'viem/utils';
+import { checkBalance } from '../../utils/helpers';
 
 interface InfraredStakeBeraArgs {
   stakeAmount: number;
@@ -40,14 +40,12 @@ export const infraredStakeBeraTool: ToolConfig<InfraredStakeBeraArgs> = {
       // constants
       const iBeraContractAddress = config.CONTRACT.IBera;
 
-      const balance = await getNativeTokenBalance(walletClient);
       const parsedStakeAmount = parseEther(args.stakeAmount.toString());
-
-      if (balance < parsedStakeAmount) {
-        throw new Error(
-          `Insufficient balance. Required: ${parsedStakeAmount.toString()}, Available: ${balance.toString()}`,
-        );
-      }
+      
+      await checkBalance(
+        walletClient,
+        parsedStakeAmount,
+      );
 
       const tx = await walletClient.writeContract({
         address: iBeraContractAddress,

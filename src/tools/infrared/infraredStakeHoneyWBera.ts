@@ -1,11 +1,12 @@
 import { WalletClient } from 'viem';
-import { ToolConfig } from '../allTools';
-import {
-  checkAndApproveAllowance,
-  fetchTokenDecimalsAndParseAmount,
-} from '../../utils/helpers';
 import { InfraredVaultContractABI } from '../../constants/abis/InfraredVaultContractABI';
 import { ConfigChain } from '../../constants/chain';
+import {
+  checkAndApproveAllowance,
+  checkBalance,
+  fetchTokenDecimalsAndParseAmount
+} from '../../utils/helpers';
+import { ToolConfig } from '../allTools';
 
 interface InfraredStakeHoneyWBeraArgs {
   stakeAmount: number;
@@ -46,6 +47,12 @@ export const infraredStakeHoneyWBeraTool: ToolConfig<InfraredStakeHoneyWBeraArgs
           args.stakeAmount,
         );
 
+        await checkBalance(
+          walletClient,
+          parsedStakeAmount,
+          config.TOKEN.HONEY_WBERA,
+        );
+      
         console.log(
           `[INFO] Checking allowance for ${config.TOKEN.HONEY_WBERA}`,
         );

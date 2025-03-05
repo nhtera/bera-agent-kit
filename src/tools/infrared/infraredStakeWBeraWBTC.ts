@@ -2,6 +2,7 @@ import { WalletClient } from 'viem';
 import { ToolConfig } from '../allTools';
 import {
   checkAndApproveAllowance,
+  checkBalance,
   fetchTokenDecimalsAndParseAmount,
 } from '../../utils/helpers';
 import { InfraredVaultContractABI } from '../../constants/abis/InfraredVaultContractABI';
@@ -44,6 +45,12 @@ export const infraredStakeWBeraWBTCTool: ToolConfig<InfraredStakeWBeraWBTCArgs> 
           walletClient,
           config.TOKEN.WBERA_WBTC,
           args.stakeAmount,
+        );
+
+        await checkBalance(
+          walletClient,
+          parsedStakeAmount,
+          config.TOKEN.WBERA_WBTC,
         );
 
         console.log(`[INFO] Checking allowance for ${config.TOKEN.WBERA_WBTC}`);

@@ -1,11 +1,12 @@
 import { WalletClient } from 'viem';
-import { ToolConfig } from '../allTools';
-import {
-  checkAndApproveAllowance,
-  fetchTokenDecimalsAndParseAmount,
-} from '../../utils/helpers';
 import { InfraredVaultContractABI } from '../../constants/abis/InfraredVaultContractABI';
 import { ConfigChain } from '../../constants/chain';
+import {
+  checkAndApproveAllowance,
+  checkBalance,
+  fetchTokenDecimalsAndParseAmount
+} from '../../utils/helpers';
+import { ToolConfig } from '../allTools';
 
 interface InfraredStakeHoneyByusdArgs {
   stakeAmount: number;
@@ -44,6 +45,12 @@ export const infraredStakeHoneyByusdTool: ToolConfig<InfraredStakeHoneyByusdArgs
           walletClient,
           config.TOKEN.HONEY_BYUSD,
           args.stakeAmount,
+        );
+
+        await checkBalance( 
+          walletClient,
+          parsedStakeAmount,
+          config.TOKEN.HONEY_BYUSD,
         );
 
         console.log(

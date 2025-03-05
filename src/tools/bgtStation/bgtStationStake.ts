@@ -3,6 +3,7 @@ import { ToolConfig } from '../allTools';
 
 import {
   checkAndApproveAllowance,
+  checkBalance,
   fetchTokenDecimalsAndParseAmount,
   fetchVaultAndTokenAddress,
 } from '../../utils/helpers';
@@ -70,7 +71,12 @@ export const bgtStationStakeTool: ToolConfig<BGTStationStakeArgs> = {
         args.amount,
       );
 
-      log.info('[INFO] Checking allowance...');
+      await checkBalance(
+        walletClient,
+        parsedAmount,
+        stakingTokenAddress,
+      );
+
       await checkAndApproveAllowance(
         walletClient,
         stakingTokenAddress,
