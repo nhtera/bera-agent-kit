@@ -42,7 +42,8 @@
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags",
-    "example": "ts-node examples/basic-usage.ts"
+    "example": "ts-node examples/basic-usage.ts",
+    "example:mcp": "ts-node examples/mcp-server.ts"
   },
   "dependencies": {
     "@browserbasehq/stagehand": "^1.0.0",
@@ -51,6 +52,7 @@
     "@langchain/core": "^0.3.27",
     "@langchain/langgraph": "^0.2.39",
     "@langchain/openai": "^0.3.17",
+    "@modelcontextprotocol/sdk": "^1.6.1",
     "@playwright/test": "^1.42.1",
     "arg": "^5.0.2",
     "axios": "^1.7.9",
@@ -66,7 +68,8 @@
     "typedoc": "^0.27.6",
     "viem": "^2.23.5",
     "winston": "^3.17.0",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "zod-to-json-schema": "^3.24.3"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",

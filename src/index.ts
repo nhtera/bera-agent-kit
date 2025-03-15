@@ -111,3 +111,6 @@ export { performRun } from './ai-agents/performRun';
 
 // Constants and types
 export * from './constants';
+
+// MCP integration
+export * from './mcp';
